@@ -1,0 +1,140 @@
+.header-nav {
+  max-height: 0;
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  min-width: 290px;
+  order: 2;
+  z-index: 10;
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.4, 1), margin 0.3s cubic-bezier(0.4, 0, 0.4, 1);
+
+  background: $secondary-color;
+
+  &--is-open {
+    max-height: 1000px;
+  }
+
+  &--is-closed {
+    max-height: 0;
+    overflow: hidden;
+    margin: 0;
+  }
+
+  @media (min-width: $tablet-width) {
+    margin: 0;
+    padding: 0;
+
+    &--is-open {
+      padding-bottom: 70px;
+    }
+  }
+
+  @media (min-width: $desktop-width) {
+    grid-area: 1/2/2/3;
+    padding-bottom: 16px;
+    padding-top: 4px;
+  }
+}
+
+.header-nav__list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  top: 0;
+  height: 100%;
+  padding: 0 0 50px 15px;
+  margin: 20px 0 0;
+  list-style: none;
+
+  @media (min-width: $tablet-width) {
+    padding: 0;
+    margin: 40px 0 0;
+    gap: 26px;
+  }
+
+  @media (min-width: $desktop-width) {
+    flex-direction: row;
+    padding: 0 133px;
+    margin: 0;
+    justify-content: space-between;
+  }
+}
+
+.header-nav__link {
+  position: relative;
+  text-decoration: none;
+  color: $accent-color;
+  font-size: 14px;
+  line-height: 100%;
+  text-transform: uppercase;
+  font-weight: 700;
+  word-break: break-word;
+  padding: 10px 0;
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.4, 1);
+
+  @media (min-width: $tablet-width) {
+    font-size: 16px;
+  }
+
+  @media (min-width: $desktop-width) {
+    font-weight: 400;
+    text-transform: none;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: calc(100% + 10px);
+    height: 1px;
+    left: -5px;
+    bottom: 7px;
+    background-color: $accent-color;
+    transform: scaleX(0);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.4, 1);
+    transform-origin: left;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    border: solid 1px $accent-color;
+    width: calc(100% + 10px);
+    height: calc(100% - 14px);
+    left: -5px;
+    top: 7px;
+    transform: scaleX(0);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.4, 1);
+    transform-origin: left;
+  }
+
+  &:focus-visible::after {
+    transform: scaleX(1);
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:active {
+    color: $secondary-color;
+  }
+
+  &--disabled {
+    color: $disabled;
+    pointer-events: none;
+    cursor: auto;
+  }
+
+  &:disabled {
+    color: $disabled;
+  }
+}
+
+.header-nav__toggle {
+  margin: 0 0 0 5px;
+
+  @media (min-width: $tablet-width) {
+    margin: 0;
+  }
+}
