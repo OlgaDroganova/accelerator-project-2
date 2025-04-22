@@ -22,10 +22,10 @@
 <body class="page-body">
   <header class="header" data-test="header">
     <div class="header__logo-wrapper container">
-      <button class="header-nav__toggle button-burger" type="button" aria-label="Навигация меню сайта">
+      <button class="header-nav__toggle button-burger" type="button" aria-label="Открыть меню">
         <span class="button-burger__contents"></span>
       </button>
-      <nav class="header__header-nav header-nav header-nav--is-closed">
+      <nav class="header__header-nav header-nav">
         <ul class="header-nav__list">
           <li class="header-nav__item">
             <a class="header-nav__link" href="#tours">Туры</a>
@@ -47,16 +47,38 @@
           </li>
         </ul>
       </nav>
-      <div class="header__logo">
-        <img class="header-logo" src="/__spritemap#sprite-logo-view" alt=" Логотип Lifetour" width="142" height="42">
-      </div>
+      <a class="header__logo" href="#">
+        <svg class="header-logo__logo" alt="Логотип Lifetour" width="142" height="42">
+          <use href="/__spritemap#sprite-logo">
+        </svg>
+
+      </a>
       <a class="header__phone" href="tel:+78000000000">8 800 000-00-00</a>
 
     </div>
   </header>
   <main>
     <section class="hero" data-test="hero">
-      <h1 class="hero__title">Захватывающие вершины Кавказа</h1>
+      <h1 class="visually-hidden">Организация походов в горы</h1>
+      <div class="hero__slider hero-slider swiper" id="hero-slider">
+        <ul class="hero-slider__list hero-tour swiper-wrapper">
+          <li class="hero-slider__item swiper-slide">
+            <picture>
+              <img src="img/mobile-tour-1@1x.jpg" srcset="img/mobile-tour-1@2x.jpg" alt="вершины Кавказа" width="320" height="568">
+            </picture>
+            <div class="hero-tour__content container">
+              <h2 class="hero-title">Захватывающие вершины Кавказа</h2>
+              <p>В сопровождении опытных гидов
+                вы пройдёте через потрясающие
+                ландшафты и совершите восход
+                на вершину горы Чегет.</p>
+            </div>
+          </li>
+          <li class="hero-slider__item swiper-slide"></li>
+          <li class="hero-slider__item swiper-slide"></li>
+          <li class="hero-slider__item swiper-slide"></li>
+        </ul>
+      </div>
     </section>
   </main>
   <!-- пример использования спрайта
@@ -65,8 +87,7 @@
     <use href="/__spritemap#sprite-user"></use>
   </svg> -->
   <!-- примеры требуемых атрибутов data-test="*" -->
-  <div>header</div>
-  <div>hero</div>
+
   <div data-test="tours">tours</div>
   <div data-test="training">training</div>
   <div data-test="about">about</div>
