@@ -10,6 +10,7 @@
   cursor: pointer;
   margin: 0;
   padding: 0;
+  clip-path: view-box;
 
   &::before {
     content: "";
@@ -18,17 +19,8 @@
     height: 2px;
     background-color: $accent-color;
     left: 0;
-    top: 2px;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    width: 26px;
-    height: 2px;
-    background-color: $accent-color;
-    left: 0;
-    bottom: 5px;
+    top: 3.5px;
+    box-shadow: -10px 8px $accent-color, 0 17px $accent-color;
   }
 
   @media (min-width: $tablet-width) {
@@ -41,42 +33,7 @@
   }
 }
 
-.button-burger__contents {
-  position: absolute;
-  height: 2px;
-  width: 16px;
-  transform: translateY(50% -50%);
-  left: 0;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.4, 1);
-  background-color: $accent-color;
-}
-
-.button-burger--is-open {
-  &::before {
-    transform: rotateY(-45deg);
-  }
-
-  &::after {
-    transform: rotateY(45deg);
-  }
-}
-
-.button-burger--is-closed {
-  &::before {
-    transform: rotateY(-45deg);
-  }
-
-  &::after {
-    transform: rotateY(45deg);
-  }
-}
-
-.button-burger--is-open .button-burger__contents {
-  transform: scaleX(0);
-  transform-origin: right;
-}
-
-.button-burger--is-closed .button-burger__contents {
-  transform: scaleX(1);
-  transform-origin: right;
+.button-burger--is-open .button-burger::before {
+  box-shadow: none;
+  transform: rotate(-45deg);
 }
